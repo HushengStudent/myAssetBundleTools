@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 3878307686
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: testa.assetbundle
+      Dependencies: {}
+    Info_1:
+      Name: testb.assetbundle
+      Dependencies: {}

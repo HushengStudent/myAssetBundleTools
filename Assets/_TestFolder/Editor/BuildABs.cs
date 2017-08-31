@@ -5,7 +5,9 @@ using System;
 
 public static class BuildABs
 {
-    private static string outPutPath = "Assets/_TestFolder/AssetBundles"; 
+    private static string outPutPath = "Assets/_TestFolder/AssetBundles";
+
+    private static string AssetBundleSrc = "Assets/_TestFolder/AssetBundleSrc/Prefab"; 
 
     [MenuItem("ABTest/Build")]
     public static void BuildTest()
@@ -24,20 +26,25 @@ public static class BuildABs
 
         string[] abs = abManifest.GetAllAssetBundles();
         string[] abAllDepend;
-        string[] abDirectDepend;
         foreach (string temp in abs)
         {
             Debug.LogError("--->assetbundle:" + temp);
-            abAllDepend = abManifest.GetAllDependencies(temp);
-            foreach (string allStr in abAllDepend)
-            {
-                Debug.LogError("--->GetAllDependencies"+"--->"+temp+":" + allStr);
-            }
-            abDirectDepend = abManifest.GetDirectDependencies(temp);
-            foreach (string directStr in abAllDepend)
-            {
-                Debug.LogError("--->GetDirectDependencies" + "--->" + temp + ":" + directStr);
-            }
         }
+
+        abAllDepend = abManifest.GetAllDependencies("testa.assetbundle");
+
+        foreach (string allStr in abAllDepend)
+        {
+            Debug.LogError("--->GetAllDependencies" + "--->" + "TestA.prefab" + ":" + allStr);
+        }
+
+        abAllDepend = abManifest.GetDirectDependencies("testa.assetbundle");
+
+        foreach (string allStr in abAllDepend)
+        {
+            Debug.LogError("--->GetDirectDependencies" + "--->" + "TestA.prefab" + ":" + allStr);
+        }
+       
+        ab.Unload(true);
     }
 }

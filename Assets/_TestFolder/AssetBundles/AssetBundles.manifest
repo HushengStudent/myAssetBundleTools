@@ -1,10 +1,14 @@
 ManifestFileVersion: 0
-CRC: 3878307686
+CRC: 2465906270
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: testa.assetbundle
-      Dependencies: {}
+      Dependencies:
+        Dependency_0: testb.assetbundle
     Info_1:
       Name: testb.assetbundle
+      Dependencies: {}
+    Info_2:
+      Name: testc.assetbundle
       Dependencies: {}

@@ -44,7 +44,21 @@ public static class BuildABs
         {
             Debug.LogError("--->GetDirectDependencies" + "--->" + "TestA.prefab" + ":" + allStr);
         }
-       
+
+        abAllDepend = abManifest.GetAllDependencies("testb.assetbundle");
+
+        foreach (string allStr in abAllDepend)
+        {
+            Debug.LogError("--->GetAllDependencies" + "--->" + "TestB.prefab" + ":" + allStr);
+        }
+
+        abAllDepend = abManifest.GetAllDependencies("testc.assetbundle");
+
+        foreach (string allStr in abAllDepend)
+        {
+            Debug.LogError("--->GetAllDependencies" + "--->" + "TestC.prefab" + ":" + allStr);
+        }
+
         ab.Unload(true);
     }
 }

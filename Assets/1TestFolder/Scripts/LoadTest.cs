@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
+/// 加载测试脚本;
 /// error:注意对PrefabA脚本中引用PrefabB的同时,在PrefabB脚本中也同时引用PrefabA.
 /// </summary>
 public class LoadTest : MonoBehaviour {
@@ -44,6 +45,8 @@ public class LoadTest : MonoBehaviour {
         AssetBundle assetbundle = AssetBundle.LoadFromFile(outPutPath + "/" + abName);
 
         if (ab == null) Debug.LogError("[LoadAB]Load AssetBundle: " + abName + " failure!");
+
+        Debug.LogError("[LoadAB]Load AssetBundle: " + abName + " success!");
 
         foreach (string str in abDirectDepend)
         {

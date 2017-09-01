@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEditor;
 using System;
 
+/// <summary>
+/// 打包测试脚本;
+/// </summary>
 public static class BuildABs
 {
     public static string outPutPath = "Assets/../AssetBundle-Test";

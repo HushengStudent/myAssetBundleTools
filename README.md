@@ -3,4 +3,4 @@ Unity5.x assetbundle tools.
 
 software：Unity5.3.8/visual studio2013.
 
-1、测试工程完成。
+1、AssetBundle打包与AssetBundle加载测试工程完成。

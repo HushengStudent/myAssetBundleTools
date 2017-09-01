@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// testA
+/// </summary>
 public class TestA : MonoBehaviour {
 
     [SerializeField]

@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 1534581108
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f9ca7a82706c870e6a2a919ae8d32bec
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 255c0b4c82934ec24a6e82b1ddb47c95
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: c88b8e79617489543bde1d76967c9d2a, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/1TestFolder/AssetBundleSrc/Prefab/CubeA.prefab
+Dependencies:
+- Assets/../AssetBundle-Test/sphereb.assetbundle

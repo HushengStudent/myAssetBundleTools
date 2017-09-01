@@ -5,21 +5,19 @@ using System;
 
 public static class BuildABs
 {
-    private static string outPutPath = "Assets/_TestFolder/AssetBundles";
+    public static string outPutPath = "Assets/../AssetBundle-Test";
 
-    private static string AssetBundleSrc = "Assets/_TestFolder/AssetBundleSrc/Prefab"; 
-
-    [MenuItem("ABTest/Build")]
+    [MenuItem("ABTest/Build Test")]
     public static void BuildTest()
     {
         BuildPipeline.BuildAssetBundles(outPutPath);
         AssetDatabase.Refresh();
     }
 
-    [MenuItem("ABTest/Manifest")]
+    [MenuItem("ABTest/Manifest Test")]
     public static void ManifestTest()
     {
-        AssetBundle ab = AssetBundle.LoadFromFile(outPutPath + "/AssetBundles");
+        AssetBundle ab = AssetBundle.LoadFromFile(outPutPath + "/AssetBundle-Test");
         if (ab == null) return;
 
         AssetBundleManifest abManifest = ab.LoadAsset("AssetBundleManifest") as AssetBundleManifest;
@@ -31,32 +29,32 @@ public static class BuildABs
             Debug.LogError("--->assetbundle:" + temp);
         }
 
-        abAllDepend = abManifest.GetAllDependencies("testa.assetbundle");
+        abAllDepend = abManifest.GetAllDependencies("cubea.assetbundle");
 
         foreach (string allStr in abAllDepend)
         {
-            Debug.LogError("--->GetAllDependencies" + "--->" + "TestA.prefab" + ":" + allStr);
+            Debug.LogError("--->GetAllDependencies" + "--->" + "CubeA.prefab" + ":" + allStr);
         }
 
-        abAllDepend = abManifest.GetDirectDependencies("testa.assetbundle");
+        abAllDepend = abManifest.GetDirectDependencies("cubea.assetbundle");
 
         foreach (string allStr in abAllDepend)
         {
-            Debug.LogError("--->GetDirectDependencies" + "--->" + "TestA.prefab" + ":" + allStr);
+            Debug.LogError("--->GetDirectDependencies" + "--->" + "CubeA.prefab" + ":" + allStr);
         }
 
-        abAllDepend = abManifest.GetAllDependencies("testb.assetbundle");
+        abAllDepend = abManifest.GetAllDependencies("sphereb.assetbundle");
 
         foreach (string allStr in abAllDepend)
         {
-            Debug.LogError("--->GetAllDependencies" + "--->" + "TestB.prefab" + ":" + allStr);
+            Debug.LogError("--->GetAllDependencies" + "--->" + "SphereB.prefab" + ":" + allStr);
         }
 
-        abAllDepend = abManifest.GetAllDependencies("testc.assetbundle");
+        abAllDepend = abManifest.GetAllDependencies("capsulec.assetbundle");
 
         foreach (string allStr in abAllDepend)
         {
-            Debug.LogError("--->GetAllDependencies" + "--->" + "TestC.prefab" + ":" + allStr);
+            Debug.LogError("--->GetAllDependencies" + "--->" + "CapsuleC.prefab" + ":" + allStr);
         }
 
         ab.Unload(true);

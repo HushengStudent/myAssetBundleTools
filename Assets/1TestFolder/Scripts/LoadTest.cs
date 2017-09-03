@@ -39,8 +39,9 @@ public class LoadTest : MonoBehaviour {
     {
         
         a = AssetBundle.LoadFromFile(outPutPath + "/" + "cubea.assetbundle");
-        b = AssetBundle.LoadFromFile(outPutPath + "/" + "sphereb.assetbundle");
-        c = AssetBundle.LoadFromFile(outPutPath + "/" + "capsulec.assetbundle");
+        //b = AssetBundle.LoadFromFile(outPutPath + "/" + "sphereb.assetbundle");
+        //c = AssetBundle.LoadFromFile(outPutPath + "/" + "capsulec.assetbundle");
+
     }
 
     void OnGUI()

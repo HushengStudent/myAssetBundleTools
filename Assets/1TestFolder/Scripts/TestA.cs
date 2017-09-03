@@ -20,6 +20,11 @@ public class TestA : MonoBehaviour {
 
     void OnGUI()
     {
-        
+        if (GUILayout.Button("Create B", GUILayout.Width(300f), GUILayout.Height(35f)))
+        {
+            //click button
+
+            GameObject.Instantiate(testB);
+        }
     }
 }

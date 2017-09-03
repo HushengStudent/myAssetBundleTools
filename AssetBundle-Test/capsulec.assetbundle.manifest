@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1285958281
+CRC: 835825929
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 86fdcac712c4012d90c6a867357cafa2
+    Hash: 63802d8d30959a576edbee49db49565f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 78351741769ea1285b881bbe63d4a42e
+    Hash: bc84e096f437eecf88465da4b9f88910
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -17,23 +17,18 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 23
   Script: {instanceID: 0}
-- Class: 28
-  Script: {instanceID: 0}
 - Class: 33
   Script: {instanceID: 0}
 - Class: 43
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 65
-  Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: c88b8e79617489543bde1d76967c9d2a, type: 3}
+  Script: {fileID: 11500000, guid: d85c540418150d9418475223da942682, type: 3}
 - Class: 115
   Script: {instanceID: 0}
-- Class: 131
+- Class: 136
   Script: {instanceID: 0}
 Assets:
-- Assets/1TestFolder/AssetBundleSrc/Prefab/CubeA.prefab
-Dependencies:
-- Assets/../AssetBundle-Test/sphereb.assetbundle
+- Assets/1TestFolder/AssetBundleSrc/Prefab/CapsuleC.prefab
+Dependencies: []

@@ -12,6 +12,12 @@ public class LoadTest : MonoBehaviour {
 
     AssetBundle ab;
 
+    AssetBundle a;
+
+    AssetBundle b;
+
+    AssetBundle c;
+
     AssetBundleManifest abManifest;
 
     private List<string> abDic = new List<string>();
@@ -21,43 +27,59 @@ public class LoadTest : MonoBehaviour {
     {
         ab = AssetBundle.LoadFromFile(outPutPath + "/AssetBundle-Test");
         abManifest = ab.LoadAsset("AssetBundleManifest") as AssetBundleManifest;
-
-        AssetBundle assetbundle = LoadAB("cubea.assetbundle");
-
-        GameObject cubea = assetbundle.LoadAsset("CubeA") as GameObject;
-
-        if (cubea != null) GameObject.Instantiate(cubea);
+        LoadAB();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
-    private AssetBundle LoadAB(string abName)
+    private void LoadAB()
     {
-        if (abName == null) return null;
-
-        string[] abDirectDepend;
-
-        abDirectDepend = abManifest.GetDirectDependencies(abName);
-
-        AssetBundle assetbundle = AssetBundle.LoadFromFile(outPutPath + "/" + abName);
-
-        if (ab == null) Debug.LogError("[LoadAB]Load AssetBundle: " + abName + " failure!");
-
-        Debug.LogError("[LoadAB]Load AssetBundle: " + abName + " success!");
-
-        foreach (string str in abDirectDepend)
-        {
-            LoadAB(str);
-        }
-
-        return assetbundle;
+        
+        a = AssetBundle.LoadFromFile(outPutPath + "/" + "cubea.assetbundle");
+        b = AssetBundle.LoadFromFile(outPutPath + "/" + "sphereb.assetbundle");
+        c = AssetBundle.LoadFromFile(outPutPath + "/" + "capsulec.assetbundle");
     }
 
     void OnGUI()
     {
-        
+        if (GUILayout.Button("Create A", GUILayout.Width(100f), GUILayout.Height(35f)))
+        {
+            //click button
+            GameObject cubea = a.LoadAsset("CubeA") as GameObject;
+
+            if (cubea != null) GameObject.Instantiate(cubea);
+        }
+        if (GUILayout.Button("Create B", GUILayout.Width(100f), GUILayout.Height(35f)))
+        {
+            //click button
+            GameObject cubea = b.LoadAsset("SphereB") as GameObject;
+
+            if (cubea != null) GameObject.Instantiate(cubea);
+        }
+        if (GUILayout.Button("Create C", GUILayout.Width(100f), GUILayout.Height(35f)))
+        {
+            //click button
+            GameObject cubea = c.LoadAsset("CapsuleC") as GameObject;
+
+            if (cubea != null) GameObject.Instantiate(cubea);
+        }
+        if (GUILayout.Button("Unload A", GUILayout.Width(100f), GUILayout.Height(35f)))
+        {
+            //click button
+            a.Unload(false);
+        }
+        if (GUILayout.Button("Unload B", GUILayout.Width(100f), GUILayout.Height(35f)))
+        {
+            b.Unload(false);
+
+        }
+        if (GUILayout.Button("Unload C", GUILayout.Width(100f), GUILayout.Height(35f)))
+        {
+            c.Unload(false);
+          
+        }
     }
 }

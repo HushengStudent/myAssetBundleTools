@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// 打包测试脚本;
@@ -13,6 +14,14 @@ public static class BuildABs
     [MenuItem("ABTest/Build Test")]
     public static void BuildTest()
     {
+        //AssetBundleBuild build = new AssetBundleBuild();
+        //build.assetBundleName = "cubea.assetbundle";
+        //List<string> assetName = new List<string>();
+        //assetName.Add("Assets/1TestFolder/AssetBundleSrc/Prefab/CubeA.prefab");
+        //build.assetNames = assetName.ToArray();
+        //List<AssetBundleBuild> buildList = new List<AssetBundleBuild>();
+        //buildList.Add(build);
+        //BuildPipeline.BuildAssetBundles(outPutPath, buildList.ToArray());
         BuildPipeline.BuildAssetBundles(outPutPath);
         AssetDatabase.Refresh();
     }

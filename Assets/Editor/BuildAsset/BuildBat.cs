@@ -22,7 +22,7 @@ public static class BuildBat
     /// <summary>
     /// 打包AssetBundle,默认只打包有更改的资源;
     /// </summary>
-    [MenuItem("AssetBundleTools/BuildAllAsset2AB")]
+    [MenuItem("AssetBundleTools/BuildAssetBundle")]
     public static void BuildAllAssetBundle()
     {
         Stopwatch watch = Stopwatch.StartNew();//开启计时;

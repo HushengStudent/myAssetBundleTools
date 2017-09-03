@@ -13,6 +13,8 @@
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
+using System;
+using System.IO;
 
 public static class BuildDefine
 {
@@ -25,7 +27,7 @@ public static class BuildDefine
     /// <summary>
     /// assetbundle打包存放路径;
     /// </summary>
-    public static string assetBundlePath = "Assets/../AssetBundle";
+    public static string assetBundlePath = "Assets/../AssetBundle/";
 
     /// <summary>
     /// AssetBundle打包目标平台;
@@ -40,4 +42,71 @@ public static class BuildDefine
     EditorUserBuildSettings.activeBuildTarget;
 #endif
 
+    /// <summary>
+    /// 根据资源路径获取资源类型;
+    /// </summary>
+    /// <param name="path">资源路径</param>
+    /// <returns></returns>
+    public static AssetType GetAssetType(string path)
+    {
+        if (null == path) return AssetType.Non;
+        switch (Path.GetExtension(path).ToLower())
+        {
+            case ".anim":
+                return AssetType.AnimeClip;
+            case ".controller":
+            case ".overridecontroller":
+                return AssetType.AnimeCtrl;
+            case ".ogg":
+            case ".wav":
+            case ".mp3":
+                return AssetType.Audio;
+            case ".png":
+            case ".bmp":
+            case ".tga":
+            case ".psd":
+            case ".dds":
+            case ".jpg":
+                return AssetType.Texture;
+            case ".shader":
+                return AssetType.Shader;
+            case ".prefab":
+                if (path.Contains("Atlas"))
+                {
+                    return AssetType.AssetPrefab;
+                }
+                return AssetType.Prefab;
+            case ".unity":
+                return AssetType.Scene;
+            case ".mat":
+                return AssetType.Material;
+            case ".cs":
+                return AssetType.Scripts;
+            case ".ttf":
+                return AssetType.Font;
+        }
+        return AssetType.Non;
+    }
+}
+
+/// <summary>
+/// 资源类型;
+/// </summary>
+public enum AssetType
+{
+    Non,
+    Prefab,
+    Scene,
+    Material,
+    Scripts,
+    Font,
+    /// <summary>
+    /// 不需要实例化的的Prefab资源,如图集;
+    /// </summary>
+    AssetPrefab,
+    Shader,
+    Texture,
+    Audio,
+    AnimeCtrl,
+    AnimeClip
 }

@@ -55,4 +55,9 @@ public class LoadTest : MonoBehaviour {
 
         return assetbundle;
     }
+
+    void OnGUI()
+    {
+        
+    }
 }

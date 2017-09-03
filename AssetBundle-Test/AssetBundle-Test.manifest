@@ -1,15 +1,7 @@
 ManifestFileVersion: 0
-CRC: 1689065272
+CRC: 442089897
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: cubea.assetbundle
-      Dependencies:
-        Dependency_0: sphereb.assetbundle
-    Info_1:
-      Name: sphereb.assetbundle
-      Dependencies:
-        Dependency_0: capsulec.assetbundle
-    Info_2:
-      Name: capsulec.assetbundle
       Dependencies: {}

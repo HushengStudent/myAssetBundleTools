@@ -17,4 +17,17 @@ public class TestA : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void OnGUI()
+    {
+        if (GUILayout.Button("Create B", GUILayout.Width(100f), GUILayout.Height(35f)))
+        {
+            //click button
+            GameObject obj = Instantiate(testB);
+        }
+        if (GUILayout.Button("Create C", GUILayout.Width(100f), GUILayout.Height(35f)))
+        {
+            //click button
+        }
+    }
 }

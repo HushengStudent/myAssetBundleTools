@@ -34,6 +34,11 @@ public static class FilePathUtil
     public static string resPath = "Assets/AssetBundleSrc/";
 
     /// <summary>
+    /// 该路径下的资源单独打包,主要是为了方便使用资源,如图集,字体,场景大的背景贴图等等;
+    /// </summary>
+    public static string singleResPath = "Assets/AssetBundleSrc/SingleAssetBundleSrc";
+
+    /// <summary>
     /// 获取AssetBundle文件的名字;
     /// </summary>
     /// <param name="type">资源类型</param>

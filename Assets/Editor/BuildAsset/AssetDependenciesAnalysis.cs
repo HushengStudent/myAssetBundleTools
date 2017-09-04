@@ -17,7 +17,15 @@ using System.Collections.Generic;
 
 public class AssetDependenciesAnalysis
 {
+    /// <summary>
+    /// 打包路径下的全部资源;
+    /// </summary>
+    public HashSet<AssetNode> allAsset = new HashSet<AssetNode>();
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public HashSet<AssetNode> independenceAsset = new HashSet<AssetNode>();
 }
 
 /// <summary>

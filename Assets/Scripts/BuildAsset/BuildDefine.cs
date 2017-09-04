@@ -30,6 +30,11 @@ public static class BuildDefine
     public static string assetBundlePath = "Assets/../AssetBundle/";
 
     /// <summary>
+    /// 代码分析依赖关系文件存放路径;
+    /// </summary>
+    public static string assetDependenciesAnalysisXmlPath = "Assets/../AssetDependenciesAnalysis/AssetDependenciesAnalysis.xml";
+
+    /// <summary>
     /// AssetBundle打包目标平台;
     /// </summary>
     public static BuildTarget buildTarget =

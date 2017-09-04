@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEditor;
 using System;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 
 /// <summary>
 /// 打包测试脚本;
@@ -11,22 +12,33 @@ public static class BuildABs
 {
     public static string outPutPath = "Assets/../AssetBundle-Test";
 
-    [MenuItem("ABTest/Build Test")]
+    [MenuItem("AssetBundleTest/AssetBundle Build Test")]
     public static void BuildTest()
     {
-        //AssetBundleBuild build = new AssetBundleBuild();
-        //build.assetBundleName = "cubea.assetbundle";
-        //List<string> assetName = new List<string>();
-        //assetName.Add("Assets/1TestFolder/AssetBundleSrc/Prefab/CubeA.prefab");
-        //build.assetNames = assetName.ToArray();
-        //List<AssetBundleBuild> buildList = new List<AssetBundleBuild>();
-        //buildList.Add(build);
-        //BuildPipeline.BuildAssetBundles(outPutPath, buildList.ToArray());
-        BuildPipeline.BuildAssetBundles(outPutPath);
+        AssetBundleBuild build = new AssetBundleBuild();
+        build.assetBundleName = "cubea.assetbundle";
+        List<string> assetName = new List<string>();
+        assetName.Add("Assets/1TestFolder/AssetBundleSrc/Prefab/CubeA.prefab");
+        build.assetNames = assetName.ToArray();
+
+        //AssetBundleBuild build2 = new AssetBundleBuild();
+        //build2.assetBundleName = "capsulec.assetbundle";
+        //List<string> assetName2 = new List<string>();
+        //assetName2.Add("Assets/1TestFolder/AssetBundleSrc/Prefab/CapsuleC.prefab");
+        //build2.assetNames = assetName2.ToArray();
+
+        List<AssetBundleBuild> buildList = new List<AssetBundleBuild>();
+        buildList.Add(build);
+        //buildList.Add(build2);
+
+        BuildPipeline.BuildAssetBundles(outPutPath, buildList.ToArray(),BuildDefine.options);
+        //BuildPipeline.BuildAssetBundles(outPutPath,BuildDefine.options);
         AssetDatabase.Refresh();
+
+        EditorUtility.UnloadUnusedAssetsImmediate();
     }
 
-    [MenuItem("ABTest/Manifest Test")]
+    [MenuItem("AssetBundleTest/AssetBundle Manifest Test")]
     public static void ManifestTest()
     {
         AssetBundle ab = AssetBundle.LoadFromFile(outPutPath + "/AssetBundle-Test");

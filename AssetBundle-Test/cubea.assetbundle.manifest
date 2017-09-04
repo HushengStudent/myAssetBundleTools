@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3102844893
+CRC: 4004200927
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6444cdac11ca05f61bdbefce696994f0
+    Hash: 14ee8e299af427d3d7fc5ac7d0879df6
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 78351741769ea1285b881bbe63d4a42e
+    Hash: 6ff9df49c19d7da830bb88845e71ff58
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -28,12 +28,15 @@ ClassTypes:
 - Class: 65
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: d85c540418150d9418475223da942682, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: c88b8e79617489543bde1d76967c9d2a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 131
   Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
 Assets:
 - Assets/1TestFolder/AssetBundleSrc/Prefab/CubeA.prefab
-Dependencies:
-- Assets/../AssetBundle-Test/capsulec.assetbundle
+Dependencies: []

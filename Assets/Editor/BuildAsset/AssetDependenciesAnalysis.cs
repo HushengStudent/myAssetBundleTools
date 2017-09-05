@@ -188,6 +188,11 @@ public class AssetDependenciesAnalysis
         };
     }
 
+    /// <summary>
+    /// AssetBundles can contain scripts as TextAssets but as such they will not be actual executable code. If you want to include
+    /// code in your AssetBundles that can be executed in your application it needs to be pre-compiled into an assembly and loaded
+    /// using the Mono Reflection class (Note: Reflection is not available on platforms that use AOT compilation, such as iOS);
+    /// </summary>
     public void BuildAllScripts()
     {
         List<AssetBundleBuild> abList = new List<AssetBundleBuild>();

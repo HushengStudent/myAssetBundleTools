@@ -33,7 +33,8 @@ public static class BuildBat
         {
             AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
             analysiser.AnalysisAllAsset();
-            analysiser.BuildAllScripts();
+            //tips:Unity5.x Scripts not need to build AssetBundle
+            //analysiser.BuildAllScripts();
         }
         BuildAssetBundle();
     }

@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 564268238
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 266a37f3815620992017b4d3b463e2b4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 584965b15e3115468663b86a895d910b
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: b84aa7318b7c1ee48ad99c27e8261274, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3e01400ee8522774284a48fa8d28baf8, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetBundleSrc/Prefab/OtherPrefab/TemplatePrefab/Template_DisplayPanel.prefab
+Dependencies: []

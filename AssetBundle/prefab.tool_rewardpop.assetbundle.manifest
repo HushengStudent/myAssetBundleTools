@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 2283593099
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bf3541d948a05bfa309c3523326c146c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1f40038b9d5d8d82a496d5f62d54bd4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetBundleSrc/Prefab/OtherPrefab/ToolsPrefab/Tool_RewardPop.prefab
+Dependencies: []

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2309794824
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: db76691df3c9032210cdbe336eb65cfa
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1e05b48bdf9804fabbe4e2bc3a785346
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetBundleSrc/AnimationClip/Animation1.anim
+Dependencies: []

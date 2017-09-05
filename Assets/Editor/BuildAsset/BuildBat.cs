@@ -22,9 +22,19 @@ public static class BuildBat
     /// <summary>
     /// 打包AssetBundle,默认只打包有更改的资源;
     /// </summary>
-    [MenuItem("AssetBundleTools/BuildAssetBundle")]
+    [MenuItem("AssetBundleTools/BuildAllAssetBundle")]
     public static void BuildAllAssetBundle()
     {
+        bool state = true;
+#if UNITY_EDITOR
+        state = EditorUtility.DisplayDialog("依赖关系生成选择框", "是否确认重新生成依赖关系，不能确认请点击OK。","OK->重新分析资源依赖关系", "Cancel->直接打包AssetBundle");
+#endif
+        if (state)
+        {
+            AssetDependenciesAnalysis analysiser = new AssetDependenciesAnalysis();
+            analysiser.AnalysisAllAsset();
+            analysiser.BuildAllScripts();
+        }
         BuildAssetBundle();
     }
 
@@ -38,6 +48,8 @@ public static class BuildBat
         BuildPipeline.BuildAssetBundles(BuildDefine.assetBundlePath, builds, BuildDefine.options, BuildDefine.buildTarget);
         watch.Stop();
         Debug.LogWarning(string.Format("[BuildBat]BuildAllAssetBundle AssetBundleBuild Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+        AssetDatabase.Refresh();
+        EditorUtility.UnloadUnusedAssetsImmediate();
     }
 
     /// <summary>
@@ -49,5 +61,7 @@ public static class BuildBat
         BuildPipeline.BuildAssetBundles(BuildDefine.assetBundlePath,BuildDefine.options, BuildDefine.buildTarget);
         watch.Stop();
         Debug.LogWarning(string.Format("[BuildBat]BuildAllAssetBundle Spend Time:{0}s", watch.Elapsed.TotalSeconds));
+        AssetDatabase.Refresh();
+        EditorUtility.UnloadUnusedAssetsImmediate();
     }
 }

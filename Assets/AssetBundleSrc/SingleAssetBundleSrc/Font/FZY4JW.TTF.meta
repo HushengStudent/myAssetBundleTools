@@ -1,14 +1,17 @@
 fileFormatVersion: 2
 guid: 246a88c2e88574642a0b297d0db8104b
 TrueTypeFontImporter:
-  serializedVersion: 2
+  serializedVersion: 3
   fontSize: 16
   forceTextureCase: -2
   characterSpacing: 1
   characterPadding: 0
   includeFontData: 1
-  use2xBehaviour: 0
   fontNames: []
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
+  ascentCalculationMode: 1
   userData: 
+  assetBundleName: font.fzy4jw.assetbundle
+  assetBundleVariant: 

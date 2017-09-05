@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3943933653
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e5d1d6d02a864d83ff80704e852ee17e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6759894fca659e2049f05064db45ce61
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetBundleSrc/SingleAssetBundleSrc/Texture/t6.png
+Dependencies: []

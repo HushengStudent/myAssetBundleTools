@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2182915505
+CRC: 3434961675
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 703140e7371f9ed35856578d7af6ca40
+    Hash: 44a4b9f3afc87857968f1c78f8cdd50b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 7a8becec1d197c8ad30ef65e4815a480
+    Hash: 321b1e40513720ad52d5cf14105338f3
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -15,11 +15,15 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 Assets:
-- Assets/AssetBundleSrc/SingleAssetBundleSrc/Atlas/FirstAtlas/FirstAtlas.prefab
+- Assets/AssetBundleSrc/Atlas/FirstAtlas/FirstAtlas.prefab
 Dependencies:
-- Assets/../AssetBundle/material.firstatlas.assetbundle
+- Assets/../AssetBundle/shader.shader.assetbundle

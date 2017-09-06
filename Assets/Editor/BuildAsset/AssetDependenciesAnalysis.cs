@@ -65,8 +65,9 @@ public class AssetDependenciesAnalysis
         List<string> allAssetPath = new List<string>();
         foreach (string tempPath in allPath)
         {
-            if (Path.GetExtension(tempPath) == ".meta") continue;
-            allAssetPath.Add(tempPath);
+            string path = tempPath.Replace("\\", "/");
+            if (Path.GetExtension(path) == ".meta") continue;
+            allAssetPath.Add(path);
         }
 
         //开始分析资源依赖关系;
@@ -120,6 +121,12 @@ public class AssetDependenciesAnalysis
         {
             EditorUtility.DisplayProgressBar("Start Search Independence Asset", "Search Progress", (i/allAssetPath.Count));
         
+            //图集特殊处理;
+            if (allAssetPath[i].Contains("Atlas") && Path.GetExtension(allAssetPath[i]) == ".prefab")
+            {
+                independenceAsset[allAssetPath[i]] = allAsset[allAssetPath[i]];
+                continue;
+            }
             if(allAsset[allAssetPath[i]].parentDependentAssets.Count==0||//没有被依赖的资源;
                 allAsset[allAssetPath[i]].parentDependentAssets.Count>1||//被超过一个资源依赖的资源;
                 allAssetPath[i].Contains(FilePathUtil.singleResPath))//指定要求单独打包的资源;

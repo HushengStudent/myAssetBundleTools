@@ -1,87 +1,54 @@
 ManifestFileVersion: 0
-CRC: 1533383867
+CRC: 1788952626
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: capsulec.assetbundle
-      Dependencies: {}
-    Info_1:
-      Name: sphereb.assetbundle
-      Dependencies:
-        Dependency_0: capsulec.assetbundle
-    Info_2:
-      Name: cubea.assetbundle
-      Dependencies:
-        Dependency_0: capsulec.assetbundle
-    Info_3:
       Name: animeclip.animation1.assetbundle
       Dependencies: {}
-    Info_4:
+    Info_1:
       Name: animectrl.animatorcontroller1.assetbundle
       Dependencies: {}
-    Info_5:
+    Info_2:
       Name: prefab.component_item.assetbundle
       Dependencies: {}
-    Info_6:
+    Info_3:
       Name: prefab.template_displaypanel.assetbundle
       Dependencies: {}
-    Info_7:
+    Info_4:
       Name: prefab.tool_rewardpop.assetbundle
       Dependencies: {}
-    Info_8:
+    Info_5:
       Name: prefab.scene_one.assetbundle
-      Dependencies: {}
-    Info_9:
-      Name: prefab.scene_two.assetbundle
-      Dependencies: {}
-    Info_10:
-      Name: material.firstatlas.assetbundle
       Dependencies:
-        Dependency_0: texture.firstatlas.assetbundle
-        Dependency_1: shader.shader.assetbundle
-    Info_11:
-      Name: texture.firstatlas.assetbundle
-      Dependencies: {}
-    Info_12:
+        Dependency_0: assetprefab.secondatlas.assetbundle
+    Info_6:
+      Name: prefab.scene_two.assetbundle
+      Dependencies:
+        Dependency_0: assetprefab.thirdatlas.assetbundle
+    Info_7:
       Name: assetprefab.firstatlas.assetbundle
       Dependencies:
-        Dependency_0: material.firstatlas.assetbundle
-    Info_13:
-      Name: material.secondatlas.assetbundle
-      Dependencies:
-        Dependency_0: texture.secondatlas.assetbundle
-        Dependency_1: shader.shader.assetbundle
-    Info_14:
-      Name: texture.secondatlas.assetbundle
-      Dependencies: {}
-    Info_15:
+        Dependency_0: shader.shader.assetbundle
+    Info_8:
       Name: assetprefab.secondatlas.assetbundle
       Dependencies:
-        Dependency_0: material.secondatlas.assetbundle
-    Info_16:
-      Name: material.thirdatlas.assetbundle
-      Dependencies:
-        Dependency_0: texture.thirdatlas.assetbundle
-        Dependency_1: shader.shader.assetbundle
-    Info_17:
-      Name: texture.thirdatlas.assetbundle
-      Dependencies: {}
-    Info_18:
+        Dependency_0: shader.shader.assetbundle
+    Info_9:
       Name: assetprefab.thirdatlas.assetbundle
       Dependencies:
-        Dependency_0: material.thirdatlas.assetbundle
-    Info_19:
+        Dependency_0: shader.shader.assetbundle
+    Info_10:
       Name: font.fzy4jw.assetbundle
       Dependencies: {}
-    Info_20:
+    Info_11:
       Name: texture.t4.assetbundle
       Dependencies: {}
-    Info_21:
+    Info_12:
       Name: texture.t5.assetbundle
       Dependencies: {}
-    Info_22:
+    Info_13:
       Name: texture.t6.assetbundle
       Dependencies: {}
-    Info_23:
+    Info_14:
       Name: shader.shader.assetbundle
       Dependencies: {}

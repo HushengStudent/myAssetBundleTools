@@ -1,18 +1,37 @@
 ManifestFileVersion: 0
-CRC: 2726872671
+CRC: 3031767039
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 880575f9d75453dfe841b34322757ae2
+    Hash: bc186893002a14d4cf5e617165f17bcc
   TypeTreeHash:
     serializedVersion: 2
-    Hash: c1f40038b9d5d8d82a496d5f62d54bd4
+    Hash: 74d84d3fc08185bf7923f874056721aa
 HashAppended: 0
 ClassTypes:
 - Class: 1
   Script: {instanceID: 0}
 - Class: 4
   Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: ae942c9068183dc40a9d01f648273726, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2c5ecb5660b11414fb042fb826e03b73, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2a92b5d748695fd44aac9feef17ba415, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f79ea79baf2e424f8a9c1971f8d9c7a, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
 Assets:
 - Assets/AssetBundleSrc/Prefab/ScenePrefab/Scene_One.prefab
-Dependencies: []
+Dependencies:
+- Assets/../AssetBundle/assetprefab.secondatlas.assetbundle

@@ -91,7 +91,7 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
     /// </summary>
     /// <param name="path"></param>
     /// <returns></returns>
-    public bool IsAssetBundleLoading(string path)
+    private bool IsAssetBundleLoading(string path)
     {
         return assetBundleLoading.Contains(path);
     }
@@ -145,6 +145,8 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
     /// <returns>AssetBundle</returns>
     private IEnumerator LoadSingleAssetBundleAsyn(string path, Action<AssetBundle> action)
     {
+        if (string.IsNullOrEmpty(path)) yield break;
+
         AssetBundle assetBundle = null;
         while (IsAssetBundleLoading(path))
         {
@@ -198,13 +200,32 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
         AssetBundle assetBundle = LoadSingleAssetBundleSyn(assetBundlePath);
         if (assetBundle == null) return null;
 
+        //返回AssetBundleName;
         string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
         foreach (string tempAssetBundle in DependentAssetBundle)
         {
+            if (tempAssetBundle == FilePathUtil.GetAssetBundleFileName(AssetType.Shader, "Shader")) continue;
             string tempPtah = FilePathUtil.assetBundlePath + tempAssetBundle;
             LoadSingleAssetBundleSyn(tempPtah);
         }
         return assetBundle;
+    }
+
+    /// <summary>
+    /// AssetBundle异步加载;
+    /// </summary>
+    /// <param name="type">资源类型</param>
+    /// <param name="assetName">资源名字</param>
+    /// <returns>AssetBundle</returns>
+    public IEnumerator LoadSingleAssetBundleAsyn(AssetType type, string assetName, Action<AssetBundle> action)
+    {
+        if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) yield break;
+        string assetBundlePath = FilePathUtil.GetAssetBundlePath(type, assetName);
+        if (assetBundlePath == null) yield break;
+        string assetBundleName = FilePathUtil.GetAssetBundleFileName(type, assetName);
+
+        //
+        IEnumerator itor = LoadSingleAssetBundleAsyn(assetBundlePath, action);
     }
 
     #endregion

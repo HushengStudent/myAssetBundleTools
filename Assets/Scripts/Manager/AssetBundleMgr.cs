@@ -17,6 +17,7 @@ using System;
 
 public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
 {
+
     #region Field
 
     /// <summary>
@@ -105,7 +106,7 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
     /// </summary>
     /// <param name="path">AssetBundle文件路径</param>
     /// <returns>AssetBundle</returns>
-    private AssetBundle LoadSingleAssetBundleSyn(string path)
+    private AssetBundle LoadSingleAssetBundleSync(string path)
     {
         if (string.IsNullOrEmpty(path)) return null;
 
@@ -189,7 +190,7 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
     /// <param name="type">资源类型</param>
     /// <param name="assetName">资源名字</param>
     /// <returns>AssetBundle</returns>
-    public AssetBundle LoadAssetBundleSyn(AssetType type, string assetName)
+    public AssetBundle LoadAssetBundleSync(AssetType type, string assetName)
     {
         if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) return null;
 
@@ -197,7 +198,7 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
         if (assetBundlePath == null) return null;
         string assetBundleName = FilePathUtil.GetAssetBundleFileName(type, assetName);
 
-        AssetBundle assetBundle = LoadSingleAssetBundleSyn(assetBundlePath);
+        AssetBundle assetBundle = LoadSingleAssetBundleSync(assetBundlePath);
         if (assetBundle == null) return null;
 
         //返回AssetBundleName;
@@ -206,7 +207,7 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
         {
             if (tempAssetBundle == FilePathUtil.GetAssetBundleFileName(AssetType.Shader, "Shader")) continue;
             string tempPtah = FilePathUtil.assetBundlePath + tempAssetBundle;
-            LoadSingleAssetBundleSyn(tempPtah);
+            LoadSingleAssetBundleSync(tempPtah);
         }
         return assetBundle;
     }
@@ -223,9 +224,105 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
         string assetBundlePath = FilePathUtil.GetAssetBundlePath(type, assetName);
         if (assetBundlePath == null) yield break;
         string assetBundleName = FilePathUtil.GetAssetBundleFileName(type, assetName);
+        //先加载依赖的AssetBundle;
+        string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
+        foreach (string tempAssetBundle in DependentAssetBundle)
+        {
+            if (tempAssetBundle == FilePathUtil.GetAssetBundleFileName(AssetType.Shader, "Shader")) continue;
+            string tempPtah = FilePathUtil.assetBundlePath + tempAssetBundle;
+            IEnumerator itor = LoadSingleAssetBundleAsyn(tempPtah,null);
+            while (itor.MoveNext())
+            {
+                yield return null;
+            }
+        }
+        //加载目标AssetBundle;
+        IEnumerator itorTarget = LoadSingleAssetBundleAsyn(assetBundlePath, action);
+        while (itorTarget.MoveNext())
+        {
+            yield return null;
+        }
+    }
 
-        //
-        IEnumerator itor = LoadSingleAssetBundleAsyn(assetBundlePath, action);
+    /// <summary>
+    /// 加载Shader AssetBundle;
+    /// </summary>
+    /// <returns>AssetBundle</returns>
+    public AssetBundle LoadShaderAssetBundle()
+    {
+        string path = FilePathUtil.GetAssetBundlePath(AssetType.Shader, "Shader");
+        return LoadSingleAssetBundleSync(path);
+    }
+
+    #endregion
+
+    #region AssetBundle Unload
+
+    /// <summary>
+    /// 卸载AssetBundle资源;
+    /// </summary>
+    /// <param name="path">资源路径</param>
+    /// <param name="flag">true or false</param>
+    private void UnloadAsset(string path,bool flag)
+    {
+        int Count = 0;
+        if (assetBundleReference.TryGetValue(path, out Count))
+        {
+            Count--;
+            if (Count == 0)
+            {
+                assetBundleReference.Remove(path);
+                AssetBundle bundle = assetBundleCache[path];
+                if (bundle != null) bundle.Unload(flag);
+                assetBundleCache.Remove(path);
+            }
+            else
+            {
+                assetBundleReference[path] = Count;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 通用资源AssetBundle卸载方法[Unload(true)];
+    /// </summary>
+    /// <param name="type">资源类型</param>
+    /// <param name="assetName">资源名字</param>
+    public void UnloadAsset(AssetType type, string assetName)
+    {
+        if (type == AssetType.Non || type == AssetType.Shader || type == AssetType.Scripts || string.IsNullOrEmpty(assetName))
+            return;
+
+        string assetBundleName = FilePathUtil.GetAssetBundleFileName(type, assetName);
+
+        string[] DependentAssetBundle = Manifest.GetAllDependencies(assetBundleName);
+        foreach (string tempAssetBundle in DependentAssetBundle)
+        {
+            if (tempAssetBundle == FilePathUtil.GetAssetBundleFileName(AssetType.Shader, "Shader")) continue;
+            string tempPtah = FilePathUtil.assetBundlePath + tempAssetBundle;
+            UnloadAsset(tempPtah,true);
+        }
+        string assetBundlePath = FilePathUtil.GetAssetBundlePath(type, assetName);
+        if (assetBundlePath != null)
+        {
+            UnloadAsset(assetBundlePath, true);
+        }
+    }
+
+    /// <summary>
+    /// AssetBundle 镜像卸载方法[Unload(false)],使用资源为一般初始化就全局保存不在销毁的资源,如:Shader;
+    /// </summary>
+    /// <param name="type">资源类型</param>
+    /// <param name="assetName">资源名字</param>
+    public void UnloadMirroring(AssetType type, string assetName)
+    {
+        if (type == AssetType.Non || type == AssetType.Scripts || string.IsNullOrEmpty(assetName))
+            return;
+        string assetBundlePath = FilePathUtil.GetAssetBundlePath(type, assetName);
+        if (assetBundlePath != null)
+        {
+            UnloadAsset(assetBundlePath, false);
+        }
     }
 
     #endregion

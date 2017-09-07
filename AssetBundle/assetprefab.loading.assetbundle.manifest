@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 2990529901
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a21b67e580afcd7cee0c009e174df775
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 321b1e40513720ad52d5cf14105338f3
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetBundleSrc/Atlas/LoadingAtlas/Loading.prefab
+Dependencies:
+- Assets/../AssetBundle/shader.shader.assetbundle

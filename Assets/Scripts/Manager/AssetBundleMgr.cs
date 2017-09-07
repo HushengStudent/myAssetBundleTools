@@ -118,12 +118,13 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
                 assetBundle = AssetBundle.LoadFromFile(path);
                 if (null == assetBundle)
                 {
-                    Debug.Log(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", path));
+                    Debug.LogError(string.Format("[AssetBundleMgr]Load AssetBundle {0} failure!", path));
                 }
                 else
                 {
                     assetBundleCache[path] = assetBundle;
                     assetBundleReference[path] = 1;
+                    Debug.Log(string.Format("[AssetBundleMgr]Load AssetBundle {0} Success!", path));
                 }
             }
             catch (Exception e)
@@ -142,9 +143,11 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
     /// <summary>
     /// AssetBundle异步加载LoadFromFileAsync,www异步加载消耗大于LoadFromFileAsync;
     /// </summary>
-    /// <param name="path">AssetBundle文件路径</param>
-    /// <returns>AssetBundle</returns>
-    private IEnumerator LoadSingleAssetBundleAsyn(string path, Action<AssetBundle> action)
+    /// <param name="path">资源路径</param>
+    /// <param name="action">AssetBundle回调</param>
+    /// <param name="progress">progress回调</param>
+    /// <returns></returns>
+    private IEnumerator LoadSingleAssetBundleAsync(string path, Action<AssetBundle> action, Action<float> progress)
     {
         if (string.IsNullOrEmpty(path)) yield break;
 
@@ -158,6 +161,14 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
             //开始加载;
             assetBundleLoading.Add(path);
             AssetBundleCreateRequest assetBundleReq = AssetBundle.LoadFromFileAsync(path);
+            //加载进度;
+            while (assetBundleReq.progress < 0.99)
+            {
+                if (null != progress)
+                    progress(assetBundleReq.progress);
+                yield return null;
+            }
+
             while (!assetBundleReq.isDone)
             {
                 yield return null;
@@ -171,7 +182,7 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
             {
                 assetBundleCache[path] = assetBundle;
                 assetBundleReference[path] = 1;
-
+                Debug.Log(string.Format("[AssetBundleMgr]Load AssetBundle {0} Success!", path));
             }
             //加载完毕;
             assetBundleLoading.Remove(path);
@@ -217,8 +228,10 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
     /// </summary>
     /// <param name="type">资源类型</param>
     /// <param name="assetName">资源名字</param>
-    /// <returns>AssetBundle</returns>
-    public IEnumerator LoadAssetBundleAsyn(AssetType type, string assetName, Action<AssetBundle> action)
+    /// <param name="action">AssetBundle回调</param>
+    /// <param name="progress">progress回调</param>
+    /// <returns></returns>
+    public IEnumerator LoadAssetBundleAsync(AssetType type, string assetName, Action<AssetBundle> action, Action<float> progress)
     {
         if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) yield break;
         string assetBundlePath = FilePathUtil.GetAssetBundlePath(type, assetName);
@@ -230,14 +243,14 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
         {
             if (tempAssetBundle == FilePathUtil.GetAssetBundleFileName(AssetType.Shader, "Shader")) continue;
             string tempPtah = FilePathUtil.assetBundlePath + tempAssetBundle;
-            IEnumerator itor = LoadSingleAssetBundleAsyn(tempPtah,null);
+            IEnumerator itor = LoadSingleAssetBundleAsync(tempPtah,null,null);
             while (itor.MoveNext())
             {
                 yield return null;
             }
         }
         //加载目标AssetBundle;
-        IEnumerator itorTarget = LoadSingleAssetBundleAsyn(assetBundlePath, action);
+        IEnumerator itorTarget = LoadSingleAssetBundleAsync(assetBundlePath, action,progress);
         while (itorTarget.MoveNext())
         {
             yield return null;
@@ -275,6 +288,7 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
                 AssetBundle bundle = assetBundleCache[path];
                 if (bundle != null) bundle.Unload(flag);
                 assetBundleCache.Remove(path);
+                Debug.Log(string.Format("[AssetBundleMgr]Unload {0} AssetBundle {0} Success!", flag,path));
             }
             else
             {

@@ -68,4 +68,25 @@ public static class FilePathUtil
         if (string.IsNullOrEmpty(assetBundleName)) return null;
         return assetBundlePath + assetBundleName;
     }
+
+    /// <summary>
+    /// 获取Resource文件加载路径;
+    /// </summary>
+    /// <param name="type">资源类型</param>
+    /// <param name="assetName">资源名字</param>
+    /// <returns>Resource资源路径;</returns>
+    public static string GetResourcePath(AssetType type, string assetName)
+    {
+        if (type == AssetType.Non || type == AssetType.Scripts || string.IsNullOrEmpty(assetName)) return null;
+        string assetPath = null;
+        switch (type)
+        {
+            case AssetType.Prefab: assetPath = "Prefabs/"; break;
+            default:
+                assetPath = type.ToString() + "/";
+                break;
+        }
+        assetPath = assetPath + assetName;
+        return assetPath;
+    }
 }

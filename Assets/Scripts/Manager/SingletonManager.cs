@@ -20,7 +20,7 @@ using System.Collections;
 public class SingletonManager<T> where T : class,new()
 {
 
-    protected static T instance = null;
+    private static T instance = null;
 
     public static T Instance
     {

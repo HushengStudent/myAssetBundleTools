@@ -81,7 +81,7 @@ public static class FilePathUtil
         string assetPath = null;
         switch (type)
         {
-            case AssetType.Prefab: assetPath = "Prefabs/"; break;
+            case AssetType.Prefab: assetPath = "Prefab/"; break;
             default:
                 assetPath = type.ToString() + "/";
                 break;

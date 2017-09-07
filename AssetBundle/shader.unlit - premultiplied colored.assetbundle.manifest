@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 669589109
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6c0ea77d7318a15d05cd9443f74d182e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1094ce4a8b63a0cc7870d736bb694a93
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetBundleSrc/Shaders/Unlit - Premultiplied Colored.shader
+Dependencies: []

@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2471817081
+CRC: 2866270019
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -65,4 +65,49 @@ AssetBundleManifest:
         Dependency_3: texture.loadingbg.assetbundle
     Info_17:
       Name: texture.loadingbg.assetbundle
+      Dependencies: {}
+    Info_18:
+      Name: shader.unlit - premultiplied colored 1.assetbundle
+      Dependencies: {}
+    Info_19:
+      Name: shader.unlit - premultiplied colored 2.assetbundle
+      Dependencies: {}
+    Info_20:
+      Name: shader.unlit - premultiplied colored 3.assetbundle
+      Dependencies: {}
+    Info_21:
+      Name: shader.unlit - premultiplied colored.assetbundle
+      Dependencies: {}
+    Info_22:
+      Name: shader.unlit - text 1.assetbundle
+      Dependencies:
+        Dependency_0: shader.shader.assetbundle
+    Info_23:
+      Name: shader.unlit - text 2.assetbundle
+      Dependencies:
+        Dependency_0: shader.shader.assetbundle
+    Info_24:
+      Name: shader.unlit - text 3.assetbundle
+      Dependencies:
+        Dependency_0: shader.shader.assetbundle
+    Info_25:
+      Name: shader.unlit - transparent colored 1.assetbundle
+      Dependencies: {}
+    Info_26:
+      Name: shader.unlit - transparent colored 2.assetbundle
+      Dependencies: {}
+    Info_27:
+      Name: shader.unlit - transparent colored 3.assetbundle
+      Dependencies: {}
+    Info_28:
+      Name: shader.unlit - transparent packed 1.assetbundle
+      Dependencies: {}
+    Info_29:
+      Name: shader.unlit - transparent packed 2.assetbundle
+      Dependencies: {}
+    Info_30:
+      Name: shader.unlit - transparent packed 3.assetbundle
+      Dependencies: {}
+    Info_31:
+      Name: shader.unlit - transparent packed.assetbundle
       Dependencies: {}

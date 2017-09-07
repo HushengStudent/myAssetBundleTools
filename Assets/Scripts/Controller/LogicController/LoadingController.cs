@@ -2,14 +2,24 @@
 using System.Collections;
 
 public class LoadingController : MonoBehaviour {
+    [SerializeField]
+    private UIProgressBar progressBar;
+    [SerializeField]
+    private UILabel progressLab;
+    
+    public void ShowLoading()
+    {
+        this.gameObject.SetActive(true);
+    }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public void HideLoading()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public void SetProgress(float progress)
+    {
+        progressBar.value = progress;
+        progressLab.text = progress.ToString();
+    }
 }

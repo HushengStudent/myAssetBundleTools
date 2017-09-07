@@ -12,17 +12,32 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameStartController : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        StartGame();
+	}
 
-        AssetBundleMgr.Instance.LoadAssetBundleSync(AssetType.Prefab, "Scene_One");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private void StartGame()
+    {
+        GameInit();
+    }
+
+    private void GameInit()
+    {
+        ResourceMgr.Instance.InitNecessaryAsset();
+    }
+
+    void OnGUI()
+    {
+        if (GUILayout.Button("Show Scene_One", GUILayout.Width(200f), GUILayout.Height(50f)))
+        {
+            SceneMgr.Instance.ShowScene("Scene_One");
+        }
+    }
 }

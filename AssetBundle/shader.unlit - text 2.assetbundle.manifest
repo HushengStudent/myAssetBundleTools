@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1527169545
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0f41a489d2a71fcded52f5a2f7f39f79
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1094ce4a8b63a0cc7870d736bb694a93
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetBundleSrc/Shaders/Unlit - Text 2.shader
+Dependencies:
+- Assets/../AssetBundle/shader.shader.assetbundle

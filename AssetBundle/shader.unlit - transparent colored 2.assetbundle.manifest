@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2811208746
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b1a8d29384b20fd6501bff1336bbbaa1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1094ce4a8b63a0cc7870d736bb694a93
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetBundleSrc/Shaders/Unlit - Transparent Colored 2.shader
+Dependencies: []

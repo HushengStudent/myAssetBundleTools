@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1527469055
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d059b510b27655ec18d25e97ca8ca1ad
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1094ce4a8b63a0cc7870d736bb694a93
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/AssetBundleSrc/Shaders/Unlit - Transparent Packed 3.shader
+Dependencies: []

@@ -26,10 +26,28 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
     /// <typeparam name="T">ctrl</typeparam>
     /// <param name="assetType">资源类型</param>
     /// <returns>资源加载器;</returns>
-    private IAssetLoader<T> CreateLoader<T>(AssetType assetType)where T : Object
+    private IAssetLoader<T> CreateLoader<T>(AssetType assetType) where T : Object
     {
-        if (assetType == AssetType.Prefab) return new AssetLoader<T>();
-        return new ResLoader<T>();
+        if (assetType == AssetType.Prefab) return new ResLoader<T>();
+        return new AssetLoader<T>();
+    }
+
+
+    /// <summary>
+    /// AssetBundle不能直接加载获得脚本;
+    /// </summary>
+    /// <typeparam name="T">ctrl</typeparam>
+    /// <param name="tempObject">Object</param>
+    /// <returns>ctrl</returns>
+    public T GetAssetCtrl<T>(Object tempObject) where T : Object
+    {
+        T ctrl = null;
+        GameObject go = tempObject as GameObject;
+        if (go != null)
+        {
+            ctrl = go.GetComponent<T>();
+        }
+        return ctrl;
     }
 
     #endregion
@@ -39,7 +57,7 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
     public void InitNecessaryAsset()
     {
         //Shader初始化;
-        AssetBundle shaderAssetBundle = AssetBundleMgr.instance.LoadShaderAssetBundle();
+        AssetBundle shaderAssetBundle = AssetBundleMgr.Instance.LoadShaderAssetBundle();
         if (shaderAssetBundle != null)
         {
             shaderAssetBundle.LoadAllAssets();
@@ -50,7 +68,7 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
         {
             Debug.LogError("[ResourceMgr]Load Shader and WarmupAllShaders failure!");
         }
-        AssetBundleMgr.instance.UnloadMirroring(AssetType.Shader, "Shader");
+        //AssetBundleMgr.Instance.UnloadMirroring(AssetType.Shader, "Shader");
     }
     #endregion
 
@@ -156,15 +174,16 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
     /// <param name="type">资源类型</param>
     /// <param name="assetName">资源名字</param>
     /// <returns>ctrl</returns>
-    public T LoadAssetFromAssetBundleSync<T>(AssetType type, string assetName) where T : Object
+    public Object LoadAssetFromAssetBundleSync(AssetType type, string assetName)
     {
-        T ctrl = null;
-        IAssetLoader<T> loader = CreateLoader<T>(type);
+        Object ctrl = null;
+        IAssetLoader<Object> loader = CreateLoader<Object>(type);
 
-        AssetBundle assetBundle = AssetBundleMgr.instance.LoadAssetBundleSync(type, assetName);
+        AssetBundle assetBundle = AssetBundleMgr.Instance.LoadAssetBundleSync(type, assetName);
         if (assetBundle != null)
         {
-            ctrl = loader.GetAsset(assetBundle.LoadAsset<T>(assetName) as T);
+            Object tempObject = assetBundle.LoadAsset(assetName);
+            ctrl = loader.GetAsset(tempObject);
         }
         return ctrl;
     }
@@ -178,13 +197,13 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
     /// <param name="action">资源回调</param>
     /// <param name="progress">progress回调</param>
     /// <returns></returns>
-    public IEnumerator LoadAssetFromAssetBundleAsync<T>(AssetType type, string assetName, Action<T> action, Action<float> progress) where T : Object
+    public IEnumerator LoadAssetFromAssetBundleAsync(AssetType type, string assetName, Action<Object> action, Action<float> progress)
     {
-        T ctrl = null;
+        Object ctrl = null;
         AssetBundle assetBundle = null;
-        IAssetLoader<T> loader = CreateLoader<T>(type);
+        IAssetLoader<Object> loader = CreateLoader<Object>(type);
 
-        IEnumerator itor = AssetBundleMgr.instance.LoadAssetBundleAsync(type, assetName, 
+        IEnumerator itor = AssetBundleMgr.Instance.LoadAssetBundleAsync(type, assetName, 
             ab => 
             {
                 assetBundle = ab;
@@ -195,7 +214,7 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
             yield return null;
         }
 
-        AssetBundleRequest request = assetBundle.LoadAssetAsync<T>(assetName);
+        AssetBundleRequest request = assetBundle.LoadAssetAsync(assetName);
         while (request.progress < 0.99)
         {
             if (progress != null)
@@ -206,7 +225,7 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
         {
             yield return null;
         }
-        ctrl = loader.GetAsset(request.asset as T);
+        ctrl = loader.GetAsset(request.asset);
         if (action != null)
             action(ctrl);
     }

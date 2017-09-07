@@ -12,8 +12,43 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
+using System;
 
 public class SceneMgr : SingletonManager<SceneMgr>
 {
+    private LoadingController loadingCtrl = null;
 
+    private float progress;
+
+    private float Progress
+    {
+        get { return progress; }
+        set
+        {
+            progress = value;
+            loadingCtrl.SetProgress(progress);
+        }
+    }
+
+    public void ShowScene(string sceneName)
+    {
+        if (string.IsNullOrEmpty(sceneName)) return;
+
+        if (loadingCtrl == null)
+        {
+            Object tempObject = ResourceMgr.Instance.LoadAssetFromAssetBundleSync(AssetType.Prefab, "Tool_Loading");
+            loadingCtrl = ResourceMgr.Instance.GetAssetCtrl<LoadingController>(tempObject);
+            MonoBehaviour.DontDestroyOnLoad(loadingCtrl);
+        }
+        loadingCtrl.ShowLoading();
+
+        
+        Resources.UnloadUnusedAssets();
+
+        ResourceMgr.Instance.LoadAssetFromAssetBundleSync(AssetType.Prefab, "Scene_One");
+
+        loadingCtrl.HideLoading();
+    }
 }

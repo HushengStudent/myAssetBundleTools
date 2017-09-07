@@ -22,3 +22,11 @@ software：Unity5.3.8/visual studio2013.
 **3、GetAllDependencies(string assetBundleName)和GetDirectDependencies(string assetBundleName)**
 
 会根据依赖关系获取信息，与资源存在于哪个AssetBundle文件无关。
+
+**4、AssetBundle.LoadFromFile(string path):AssetBundle同步加载，The function supports bundles of any compression type.**
+**5、AssetBundle.LoadFromFileAsync(string path):AssetBundle异步加载，The function supports bundles of any compression type.**
+
+**6、AssetBundle.LoadAsset(string assetName):同步加载AssetBundle资源**
+**7、AssetBundle.LoadAllAssetsAsync(string assetName):异步加载AssetBundle资源**
+Prior to version 5.0, users could fetch individual components directly using LoadAsync. 
+This is not supported anymore. Instead, please use LoadAssetAsync to load the game object first and then look up the component on the object.

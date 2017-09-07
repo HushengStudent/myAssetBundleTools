@@ -218,7 +218,7 @@ public class AssetBundleMgr : SingletonManager<AssetBundleMgr>
     /// <param name="type">资源类型</param>
     /// <param name="assetName">资源名字</param>
     /// <returns>AssetBundle</returns>
-    public IEnumerator LoadSingleAssetBundleAsyn(AssetType type, string assetName, Action<AssetBundle> action)
+    public IEnumerator LoadAssetBundleAsyn(AssetType type, string assetName, Action<AssetBundle> action)
     {
         if (type == AssetType.Non || string.IsNullOrEmpty(assetName)) yield break;
         string assetBundlePath = FilePathUtil.GetAssetBundlePath(type, assetName);

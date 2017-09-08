@@ -16,7 +16,7 @@ using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using System;
 
-public class SceneMgr : SingletonManager<SceneMgr>
+public class SceneMgr : MonoSingletonMgr<SceneMgr>
 {
     private LoadingController loadingCtrl = null;
 
@@ -40,7 +40,7 @@ public class SceneMgr : SingletonManager<SceneMgr>
         {
             Object tempObject = ResourceMgr.Instance.LoadAssetFromAssetBundleSync(AssetType.Prefab, "Tool_Loading");
             loadingCtrl = ResourceMgr.Instance.GetAssetCtrl<LoadingController>(tempObject);
-            MonoBehaviour.DontDestroyOnLoad(loadingCtrl);
+            DontDestroyOnLoad(loadingCtrl);
         }
         loadingCtrl.ShowLoading();
 

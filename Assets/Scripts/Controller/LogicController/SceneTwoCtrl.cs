@@ -12,4 +12,12 @@ public class SceneTwoCtrl : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void OnGUI()
+    {
+        if (GUILayout.Button("Jump to Scene_One", GUILayout.Width(200f), GUILayout.Height(50f)))
+        {
+            SceneMgr.Instance.ShowScene(GameSceneEnum.Scene_One);
+        }
+    }
 }

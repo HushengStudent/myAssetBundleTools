@@ -20,6 +20,6 @@ public class LoadingController : MonoBehaviour {
     public void SetProgress(float progress)
     {
         progressBar.value = progress;
-        progressLab.text = progress.ToString();
+        progressLab.text = (progress*100).ToString();
     }
 }

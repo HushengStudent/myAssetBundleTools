@@ -15,6 +15,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using System;
+using System.Collections.Generic;
 
 public class SceneMgr : MonoSingletonMgr<SceneMgr>
 {
@@ -31,11 +32,21 @@ public class SceneMgr : MonoSingletonMgr<SceneMgr>
             loadingCtrl.SetProgress(progress);
         }
     }
+    /// <summary>
+    /// 当前场景;
+    /// </summary>
+    private GameObject currentScene = null;
 
-    public void ShowScene(string sceneName)
+    /// <summary>
+    /// SceneMgr资源回收器;
+    /// </summary>
+    private RecycleAssetContainer container = new RecycleAssetContainer();
+
+    public void ShowScene(GameSceneEnum scene)
     {
+        string sceneName = scene.ToString();
         if (string.IsNullOrEmpty(sceneName)) return;
-
+        //加载Loading界面;
         if (loadingCtrl == null)
         {
             Object tempObject = ResourceMgr.Instance.LoadAssetFromAssetBundleSync(AssetType.Prefab, "Tool_Loading");
@@ -43,12 +54,34 @@ public class SceneMgr : MonoSingletonMgr<SceneMgr>
             DontDestroyOnLoad(loadingCtrl);
         }
         loadingCtrl.ShowLoading();
-
-        
+        if (currentScene != null)
+        {
+            GameObject.DestroyImmediate(currentScene);
+            container.UnloadAsset();
+        }
+        //卸载无用资源;
         Resources.UnloadUnusedAssets();
 
-        ResourceMgr.Instance.LoadAssetFromAssetBundleSync(AssetType.Prefab, "Scene_One");
-
-        loadingCtrl.HideLoading();
+        CoroutineMgr.Instance.StartCoroutine(ResourceMgr.Instance.LoadAssetFromAssetBundleAsync(AssetType.Prefab,sceneName,
+            go =>
+            {
+                currentScene = go as GameObject;
+                loadingCtrl.HideLoading();
+            },
+            progressValue =>
+            {
+                Progress = progressValue;
+            }
+            ));
     }
+}
+
+/// <summary>
+/// 游戏场景枚举;
+/// </summary>
+public enum GameSceneEnum
+{
+    Non       = 0,
+    Scene_One = 1,
+    Scene_Two = 2
 }

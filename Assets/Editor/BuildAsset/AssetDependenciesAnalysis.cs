@@ -43,11 +43,6 @@ public class AssetDependenciesAnalysis
     public Dictionary<string,AssetNode> independenceAsset = new Dictionary<string,AssetNode>();
 
     /// <summary>
-    /// 全部引用的脚本资源;
-    /// </summary>
-    public HashSet<string> allScriptAsset = new HashSet<string>();
-
-    /// <summary>
     /// 全部引用的Shader资源;
     /// </summary>
     public HashSet<string> allShaderAsset = new HashSet<string>();
@@ -87,7 +82,6 @@ public class AssetDependenciesAnalysis
                 //依赖脚本直接添加到脚本队列;
                 if (BuildDefine.GetAssetType(tempPath)== AssetType.Scripts)
                 {
-                    allScriptAsset.Add(tempPath);
                     continue;
                 }
                 //依赖Shader直接添加到脚本队列;
@@ -125,6 +119,11 @@ public class AssetDependenciesAnalysis
             if (allAssetPath[i].Contains("Atlas") && Path.GetExtension(allAssetPath[i]) == ".prefab")
             {
                 independenceAsset[allAssetPath[i]] = allAsset[allAssetPath[i]];
+                continue;
+            }
+            if (allAssetPath[i].Contains("Shaders") && Path.GetExtension(allAssetPath[i]) == ".shader")
+            {
+                allShaderAsset.Add(allAssetPath[i]);
                 continue;
             }
             if(allAsset[allAssetPath[i]].parentDependentAssets.Count==0||//没有被依赖的资源;
@@ -202,17 +201,7 @@ public class AssetDependenciesAnalysis
     /// </summary>
     public void BuildAllScripts()
     {
-        List<AssetBundleBuild> abList = new List<AssetBundleBuild>();
-        AssetBundleBuild build = new AssetBundleBuild();
-        build.assetBundleName = FilePathUtil.GetAssetBundleFileName(AssetType.Scripts,"Scripts");
-        List<string> assetNameList = new List<string>();
-        foreach (string tempPath in allScriptAsset)
-        {
-            assetNameList.Add(tempPath);
-        }
-        build.assetNames = assetNameList.ToArray();
-        abList.Add(build);
-        BuildBat.BuildAssetBundle(abList.ToArray());
+        
     }
 }
 

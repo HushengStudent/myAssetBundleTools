@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4263019545
+CRC: 3818115558
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b2c6545ce702eb605c6fefd11ac78cbe
+    Hash: 351f16be02fc3196daa7fce9c871ba9f
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1094ce4a8b63a0cc7870d736bb694a93
@@ -12,6 +12,20 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 Assets:
+- Assets/AssetBundleSrc/Shaders/Unlit - Text 2.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Text 1.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Transparent Colored 2.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Premultiplied Colored 3.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Transparent Colored 1.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Transparent Colored 3.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Premultiplied Colored 2.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Text 3.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Transparent Packed 2.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Transparent Packed 1.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Premultiplied Colored 1.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Premultiplied Colored.shader
 - Assets/AssetBundleSrc/Shaders/Unlit - Transparent Colored.shader
 - Assets/AssetBundleSrc/Shaders/Unlit - Text.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Transparent Packed.shader
+- Assets/AssetBundleSrc/Shaders/Unlit - Transparent Packed 3.shader
 Dependencies: []

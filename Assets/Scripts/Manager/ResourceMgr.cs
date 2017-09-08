@@ -14,6 +14,8 @@ using UnityEngine;
 using System.Collections;
 using System;
 using Object = UnityEngine.Object;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public class ResourceMgr : SingletonManager<ResourceMgr>
 {
@@ -232,4 +234,46 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
 
     #endregion
 
+    #region Unload Asset
+
+    #endregion
+}
+
+/// <summary>
+/// 待回收资源;
+/// </summary>
+public class RecycleAssetContainer
+{
+    private Dictionary<string, AssetType> RecycleDic = new Dictionary<string, AssetType>();
+
+    /// <summary>
+    /// 添加待回收资源;
+    /// </summary>
+    /// <param name="type">资源类型</param>
+    /// <param name="assetName">资源名字</param>
+    /// <returns>添加是否成功;</returns>
+    public bool AddAsset(AssetType type, string assetName)
+    {
+        string key = assetName + "." + type;
+        if (RecycleDic.ContainsKey(key))
+        {
+            Debug.LogWarning("[ResourceMgr]RecycleAssetContainer AddAsset is exist!");
+            return false;
+        }
+        RecycleDic[key] = type;
+        return true;
+    }
+
+    /// <summary>
+    /// 回收资源;
+    /// </summary>
+    public void UnloadAsset()
+    {
+        foreach (var temp in RecycleDic)
+        {
+            string[] nameArg = Regex.Split(temp.Key, ".");
+            if (nameArg.Length>0) AssetBundleMgr.Instance.UnloadAsset(temp.Value, nameArg[0]);
+        }
+        RecycleDic.Clear();
+    }
 }

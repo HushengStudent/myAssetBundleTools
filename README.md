@@ -31,4 +31,4 @@ software：Unity5.3.8/visual studio2013.
 
 **7、AssetBundle.LoadAllAssetsAsync(string assetName):异步加载AssetBundle资源**
 
-Prior to version 5.0, users could fetch individual components directly using LoadAsync.This is not supported anymore. Instead, please use LoadAssetAsync to load the game object first and then look up the component on the object.
+**Prior to version 5.0, users could fetch individual components directly using LoadAsync.This is not supported anymore. Instead, please use LoadAssetAsync to load the game object first and then look up the component on the object.**

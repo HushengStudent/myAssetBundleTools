@@ -65,8 +65,15 @@ public class SceneMgr : MonoSingletonMgr<SceneMgr>
         CoroutineMgr.Instance.StartCoroutine(ResourceMgr.Instance.LoadAssetFromAssetBundleAsync(AssetType.Prefab,sceneName,
             go =>
             {
+                if (go == null) 
+                {
+                    ShowScene(GameSceneEnum.Scene_One);
+                    Debug.Log(string.Format("[SceneMgr]Load Scene {0} failure!", sceneName));
+                    return;
+                }
                 currentScene = go as GameObject;
                 loadingCtrl.HideLoading();
+                Debug.Log(string.Format("[SceneMgr]Load Scene {0} Success!", sceneName));
             },
             progressValue =>
             {

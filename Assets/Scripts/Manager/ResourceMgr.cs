@@ -95,6 +95,7 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
                 return loader.GetAsset(ctrl);
             }
         }
+        Debug.LogError(string.Format("[ResourceMgr]LoadResourceSync Load Asset {0} failure!", assetName + "." + type.ToString()));
         return null;
     }
 
@@ -164,6 +165,10 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
         {
             action(ctrl);
         }
+        else
+        {
+            Debug.LogError(string.Format("[ResourceMgr]LoadResourceAsync Load Asset {0} failure!", assetName + "." + type.ToString()));
+        }
     }
     #endregion
 
@@ -187,6 +192,8 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
             Object tempObject = assetBundle.LoadAsset(assetName);
             ctrl = loader.GetAsset(tempObject);
         }
+        if(ctrl== null)
+            Debug.LogError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
         return ctrl;
     }
 
@@ -228,15 +235,14 @@ public class ResourceMgr : SingletonManager<ResourceMgr>
             yield return null;
         }
         ctrl = loader.GetAsset(request.asset);
+        if (ctrl == null)
+            Debug.LogError(string.Format("[ResourceMgr]LoadAssetFromAssetBundleSync Load Asset {0} failure!", assetName + "." + type.ToString()));
         if (action != null)
             action(ctrl);
     }
 
     #endregion
 
-    #region Unload Asset
-
-    #endregion
 }
 
 /// <summary>

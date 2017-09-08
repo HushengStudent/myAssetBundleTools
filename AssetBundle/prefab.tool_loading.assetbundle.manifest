@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2280615387
+CRC: 3501995743
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ef95853bcd670259a5b87a1778436174
+    Hash: 985515927504f753cc87078f00415f41
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 1b2765c0d455a7512c0b66a19e959fc5
+    Hash: 69d643ef61377159ad79cd19ee4065f5
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -28,21 +28,21 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 0efaf980647fc5242b49d60319008bee, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: ae942c9068183dc40a9d01f648273726, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 2c5ecb5660b11414fb042fb826e03b73, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: d5c5ca47aa5c01740810b7c66662099f, type: 3}
+  Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2a92b5d748695fd44aac9feef17ba415, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 9b202fea542cfac43b87ef5b4ebda358, type: 3}
+  Script: {fileID: 11500000, guid: 2c5ecb5660b11414fb042fb826e03b73, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
+  Script: {fileID: 11500000, guid: 9b202fea542cfac43b87ef5b4ebda358, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ae942c9068183dc40a9d01f648273726, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d5c5ca47aa5c01740810b7c66662099f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 124
@@ -52,7 +52,7 @@ ClassTypes:
 Assets:
 - Assets/AssetBundleSrc/Prefab/OtherPrefab/ToolsPrefab/Tool_Loading.prefab
 Dependencies:
-- Assets/../AssetBundle/font.fzy4jw.assetbundle
+- Assets/../AssetBundle/texture.loadingbg.assetbundle
 - Assets/../AssetBundle/shader.shader.assetbundle
 - Assets/../AssetBundle/assetprefab.loading.assetbundle
-- Assets/../AssetBundle/texture.loadingbg.assetbundle
+- Assets/../AssetBundle/font.fzy4jw.assetbundle

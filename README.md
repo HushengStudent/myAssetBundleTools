@@ -38,3 +38,11 @@ Prior to version 5.0, users could fetch individual components directly using Loa
 **6、AssetBundle.Unload(true)卸载AssetBundle加载的Asset Memory与AssetBundle序列化头文件**
 
 **AssetBundle.Unload(false)仅卸载AssetBundle序列化头文件**
+
+**Summary:**
+
+①不再支持脚本打包了；
+
+②AssetBundle资源加载不再支持直接获取组件了，需先加载Object然后再获得Components；
+
+③下载工程，点击AssetBundleTools/BuildAllAssetBundle/OK，打开场景GameController，运行。

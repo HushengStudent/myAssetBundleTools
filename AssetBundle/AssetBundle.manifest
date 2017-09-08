@@ -1,68 +1,68 @@
 ManifestFileVersion: 0
-CRC: 3633244143
+CRC: 4168169050
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: animeclip.animation1.assetbundle
+      Name: texture.t4.assetbundle
       Dependencies: {}
     Info_1:
-      Name: animectrl.animatorcontroller1.assetbundle
+      Name: texture.loadingbg.assetbundle
       Dependencies: {}
     Info_2:
-      Name: prefab.component_item.assetbundle
+      Name: texture.t6.assetbundle
       Dependencies: {}
     Info_3:
-      Name: prefab.template_displaypanel.assetbundle
+      Name: texture.t5.assetbundle
       Dependencies: {}
     Info_4:
-      Name: prefab.tool_rewardpop.assetbundle
+      Name: shader.shader.assetbundle
       Dependencies: {}
     Info_5:
-      Name: prefab.scene_one.assetbundle
-      Dependencies:
-        Dependency_0: assetprefab.secondatlas.assetbundle
+      Name: prefab.template_displaypanel.assetbundle
+      Dependencies: {}
     Info_6:
-      Name: prefab.scene_two.assetbundle
+      Name: prefab.tool_loading.assetbundle
       Dependencies:
-        Dependency_0: assetprefab.thirdatlas.assetbundle
+        Dependency_0: texture.loadingbg.assetbundle
+        Dependency_1: shader.shader.assetbundle
+        Dependency_2: assetprefab.loading.assetbundle
+        Dependency_3: font.fzy4jw.assetbundle
     Info_7:
-      Name: assetprefab.firstatlas.assetbundle
-      Dependencies:
-        Dependency_0: shader.shader.assetbundle
+      Name: prefab.component_item.assetbundle
+      Dependencies: {}
     Info_8:
-      Name: assetprefab.secondatlas.assetbundle
-      Dependencies:
-        Dependency_0: shader.shader.assetbundle
-    Info_9:
       Name: assetprefab.thirdatlas.assetbundle
       Dependencies:
         Dependency_0: shader.shader.assetbundle
-    Info_10:
-      Name: font.fzy4jw.assetbundle
+    Info_9:
+      Name: animectrl.animatorcontroller1.assetbundle
       Dependencies: {}
+    Info_10:
+      Name: prefab.scene_two.assetbundle
+      Dependencies:
+        Dependency_0: assetprefab.thirdatlas.assetbundle
     Info_11:
-      Name: texture.t4.assetbundle
+      Name: animeclip.animation1.assetbundle
       Dependencies: {}
     Info_12:
-      Name: texture.t5.assetbundle
-      Dependencies: {}
-    Info_13:
-      Name: texture.t6.assetbundle
-      Dependencies: {}
-    Info_14:
-      Name: shader.shader.assetbundle
-      Dependencies: {}
-    Info_15:
       Name: assetprefab.loading.assetbundle
       Dependencies:
         Dependency_0: shader.shader.assetbundle
-    Info_16:
-      Name: prefab.tool_loading.assetbundle
+    Info_13:
+      Name: assetprefab.secondatlas.assetbundle
       Dependencies:
-        Dependency_0: font.fzy4jw.assetbundle
-        Dependency_1: shader.shader.assetbundle
-        Dependency_2: assetprefab.loading.assetbundle
-        Dependency_3: texture.loadingbg.assetbundle
+        Dependency_0: shader.shader.assetbundle
+    Info_14:
+      Name: prefab.scene_one.assetbundle
+      Dependencies:
+        Dependency_0: assetprefab.secondatlas.assetbundle
+    Info_15:
+      Name: prefab.tool_rewardpop.assetbundle
+      Dependencies: {}
+    Info_16:
+      Name: assetprefab.firstatlas.assetbundle
+      Dependencies:
+        Dependency_0: shader.shader.assetbundle
     Info_17:
-      Name: texture.loadingbg.assetbundle
+      Name: font.fzy4jw.assetbundle
       Dependencies: {}

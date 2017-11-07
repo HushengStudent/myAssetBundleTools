@@ -72,6 +72,7 @@ public class SceneMgr : MonoSingletonMgr<SceneMgr>
                     return;
                 }
                 currentScene = go as GameObject;
+                container.AddAsset(AssetType.Prefab, sceneName);
                 loadingCtrl.HideLoading();
                 Debug.Log(string.Format("[SceneMgr]Load Scene {0} Success!", sceneName));
             },

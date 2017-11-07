@@ -260,7 +260,7 @@ public class RecycleAssetContainer
     /// <returns>添加是否成功;</returns>
     public bool AddAsset(AssetType type, string assetName)
     {
-        string key = assetName + "." + type;
+        string key = assetName + "&" + type;
         if (RecycleDic.ContainsKey(key))
         {
             Debug.LogWarning("[ResourceMgr]RecycleAssetContainer AddAsset is exist!");
@@ -277,7 +277,7 @@ public class RecycleAssetContainer
     {
         foreach (var temp in RecycleDic)
         {
-            string[] nameArg = Regex.Split(temp.Key, ".");
+            string[] nameArg = Regex.Split(temp.Key, "&");
             if (nameArg.Length>0) AssetBundleMgr.Instance.UnloadAsset(temp.Value, nameArg[0]);
         }
         RecycleDic.Clear();

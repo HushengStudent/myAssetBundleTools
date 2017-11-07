@@ -25,7 +25,7 @@ public static class FilePathUtil
 #elif UNITY_ANDROID && !UNITY_EDITOR
     Application.persistentDataPath;
 #else
-    BuildDefine.assetBundlePath;
+    "Assets/../AssetBundle/";
 #endif
 
     /// <summary>
